@@ -1,7 +1,10 @@
 name: Check Throttle Method
 
 #Que lo inicia o enciende
-on: push
+on:
+  push:
+    branches:
+      - master
 
 #Que trabajo va a hacer
 jobs:
@@ -19,7 +22,7 @@ jobs:
       - uses: actions/setup-node@4
         with:
           cache: "npm"
-          node-version: "18"
+          node-version: 18
 
       # Instalamos todas las dependencia de modo claro
       - name: Clear Instalation of  Dependencies
