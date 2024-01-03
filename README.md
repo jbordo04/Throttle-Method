@@ -1,30 +1,29 @@
-# React + TypeScript + Vite
+# Throttle Method
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Todos los comando posibles:
 
-Currently, two official plugins are available:
+`npm run dev` Inicia la interfaz web
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+`npm test` Inicia el test
 
-## Expanding the ESLint configuration
+`npm run lint` Inicia el lint
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Un poco de información
 
-- Configure the top-level `parserOptions` property like this:
+Ejemplo práctico de como funciona el método Throttle, antes que nada, que es?
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+- El método Throttle es una función que limita la llamada de otra función/s, es decir, hace de cuello de botella, de ahí su nombre, limitando su frecuencia.
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+- En nuestro caso, la función deseada es un generador de password aleatoria ==> randomkey()
+
+- Cada vez que le damos al boton, `generar`, llama a esta función.
+
+- Supongamos que es una función muy pesada o que pide muchos recursos, queremos limitarla al uso ideóneo, antes de esta función, la pasaremos por otra que hará de embudo y solo la llamará al principio y solo después de cierto tiempo idóneo (ms).
+
+                throttle(randomkey, 5000)
+
+## Comandos
+
+- `npm run dev`: Si no se abre automáticamente la pagina, hacer click donde salga [http://localhost], se abrirá la pagina web para poder entender las diferencias de implementarlo.
+
+- `npm test`: Hace unas pruebas predefinidas para obtener la validez de la función.

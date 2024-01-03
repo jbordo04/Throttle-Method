@@ -16,7 +16,7 @@ export function randomKey(): string {
   }
 }
 
-export function throttle<T extends (...args: any[]) => void>(
+export function throttle<T extends (...args: Parameters<T>) => void>(
   callback: T,
   freq: number
 ) {
@@ -39,12 +39,12 @@ export function throttle<T extends (...args: any[]) => void>(
 
 //No funciona el front, sirve para provar su funcionalidad
 
-// const result = throttle(() => {
-//   const res = randomKey();
-//   console.log(res);
-// }, 2000);
+const result = throttle(() => {
+  const res = randomKey();
+  console.log(res);
+}, 2000);
 
-// result();
-// setTimeout(() => result(), 100);
-// setTimeout(() => result(), 2000);
-// setTimeout(() => result(), 2500);
+result();
+setTimeout(() => result(), 100);
+setTimeout(() => result(), 2000);
+setTimeout(() => result(), 2500);

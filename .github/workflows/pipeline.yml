@@ -1,24 +1,54 @@
 name: Check Throttle Method
 
-on:
-  push:
-    branches:
-      - master
+#Que lo inicia o enciende
+on: push
 
+#Que trabajo va a hacer
 jobs:
-  lint:
-    runs-ons: ubuntu-latest
+  #Nombre del trabajo
+  deploy:
+    #Sistema Virtual a utilizar
+    runs-on: ubuntu-latest
     steps:
+      #Comprovamos que haya un repositorio
       - uses: actions/checkout@4
         with:
           fetch-depth: 0
+
+      # Permite configurar que version de Node queremos
       - uses: actions/setup-node@4
         with:
           cache: "npm"
           node-version: "18"
+
+      # Instalamos todas las dependencia de modo claro
       - name: Clear Instalation of  Dependencies
         run: npm ci
+
+      # Ejecutamos el Lint para comprovar que cumple con las reglas de estilos
       - name: Execute Lint
         run: npm run lint
+
+      # Ejecutamos que el test sea correcto
       - name: Test
         run: npm test
+
+      #Si todo esta correcto, podemos hacer un push sobre el repo
+      - name: Commit changes
+
+        run: |
+          git config --local user.email "actions@github.com"
+          git config --local user.name "GitHub Actions"
+          git add .
+          git commit -m "Apply ESLint changes"
+
+      - name: Push changes if ESLint passed
+        if: success() # Esta línea asegura que solo se ejecute si los pasos anteriores (lint) fueron exitosos
+        run: git push origin ${{ github.ref }}
+
+      # - name: Push Changes
+      #   uses: ad-m/github-push-action@master
+      #   with:
+      #     #La referencia completa de la rama que inicia la ejecución
+      #     branch: ${{ github.ref }}
+      #     github_token: ${{ secrets.GITHUB_TOKEN }}

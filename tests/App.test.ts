@@ -8,7 +8,7 @@ describe("Test para verficiar las funciones", () => {
     expect(key.length).toBe(6);
   });
 
-  test("Generar una llave randomThrottle", () => {
+  test("Llamar funcion randomThrottle", () => {
     const callback = jest.fn();
     const throttleF = throttle(callback, 1000);
     throttleF();
@@ -19,4 +19,15 @@ describe("Test para verficiar las funciones", () => {
     jest.runAllTimers();
     expect(callback).toHaveBeenCalledTimes(2);
   });
+  // test("Generar un error en el test", () => {
+  //   const callback = jest.fn();
+  //   const throttleF = throttle(callback, 1000);
+  //   throttleF();
+  //   setTimeout(() => throttleF(), 500);
+  //   setTimeout(() => throttleF(), 1000);
+  //   setTimeout(() => throttleF(), 1500);
+
+  //   jest.runAllTimers();
+  //   expect(callback).toHaveBeenCalledTimes(1);
+  // });
 });
