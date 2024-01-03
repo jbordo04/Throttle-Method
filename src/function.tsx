@@ -24,6 +24,7 @@ export function throttle<T extends (...args: Parameters<T>) => void>(
   let lastFn: ReturnType<typeof setTimeout>;
 
   return function (this: ThisParameterType<T>, ...args: Parameters<T>) {
+    // console.log("asd");
     if (!wait) {
       clearTimeout(lastFn);
       callback.apply(this, args);
@@ -36,15 +37,29 @@ export function throttle<T extends (...args: Parameters<T>) => void>(
     }
   };
 }
+// return (...args: Parameters<T>) => {
+//   // console.log("asd");
+//   if (!wait) {
+//     clearTimeout(lastFn);
+//     callback(...args);
+//     wait = true;
+//     lastFn = setTimeout(() => {
+//       wait = false;
+//     }, freq);
+//   } else {
+//     console.log("throttled!");
+//   }
+// };
+// }
 
-//No funciona el front, sirve para provar su funcionalidad
+// No funciona el front, sirve para provar su funcionalidad
 
-const result = throttle(() => {
-  const res = randomKey();
-  console.log(res);
-}, 2000);
+// const result = throttle(() => {
+//   const res = randomKey();
+//   console.log(res);
+// }, 2000);
 
-result();
-setTimeout(() => result(), 100);
-setTimeout(() => result(), 2000);
-setTimeout(() => result(), 2500);
+// result();
+// setTimeout(() => result(), 100);
+// setTimeout(() => result(), 2000);
+// setTimeout(() => result(), 2500);
