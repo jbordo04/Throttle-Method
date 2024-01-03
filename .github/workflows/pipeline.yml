@@ -10,7 +10,7 @@ jobs:
     #Sistema Virtual a utilizar
     runs-on: ubuntu-latest
     steps:
-      #Comprovamos que haya un repositorio
+      #Comprovamos que tenga un repositorio
       - uses: actions/checkout@4
         with:
           fetch-depth: 0
