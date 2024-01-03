@@ -13,7 +13,7 @@ function App() {
   const handlingThrottle = throttle(() => {
     const ran = randomKey();
     setThrottle(ran);
-  }, 5000);
+  }, 4000);
   return (
     <>
       <h1>Comprueba la función Throttle!!</h1>

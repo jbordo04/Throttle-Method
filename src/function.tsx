@@ -16,11 +16,14 @@ export function randomKey(): string {
   }
 }
 
-export function throttle(callback: Function, freq: number) {
+export function throttle<T extends (...args: any[]) => void>(
+  callback: T,
+  freq: number
+) {
   let wait: boolean = false;
   let lastFn: ReturnType<typeof setTimeout>;
 
-  return function (this: any, ...args: any[]) {
+  return function (this: ThisParameterType<T>, ...args: Parameters<T>) {
     if (!wait) {
       clearTimeout(lastFn);
       callback.apply(this, args);
@@ -33,3 +36,15 @@ export function throttle(callback: Function, freq: number) {
     }
   };
 }
+
+//No funciona el front, sirve para provar su funcionalidad
+
+// const result = throttle(() => {
+//   const res = randomKey();
+//   console.log(res);
+// }, 2000);
+
+// result();
+// setTimeout(() => result(), 100);
+// setTimeout(() => result(), 2000);
+// setTimeout(() => result(), 2500);
