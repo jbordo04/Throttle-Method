@@ -22,11 +22,15 @@ jobs:
       - uses: actions/setup-node@4
         with:
           cache: "npm"
-          node-version: 18
+          node-version: "18"
 
       # Instalamos todas las dependencia de modo claro
       - name: Clear Instalation of  Dependencies
         run: npm ci
+
+      # Compilamos TSC y vite con build
+      - name: Build project
+        run: npm run build
 
       # Ejecutamos el Lint para comprovar que cumple con las reglas de estilos
       - name: Execute Lint
