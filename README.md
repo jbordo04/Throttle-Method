@@ -22,8 +22,10 @@ Ejemplo práctico de como funciona el método Throttle, antes que nada, que es?
 
                 throttle(randomkey, 5000)
 
-## Comandos
+## Comandos && Detalles
 
 - `npm run dev`: Si no se abre automáticamente la pagina, hacer click donde salga [http://localhost], se abrirá la pagina web para poder entender las diferencias de implementarlo.
 
 - `npm test`: Hace unas pruebas predefinidas para obtener la validez de la función.
+
+- `node dist/cli.js`: Ejecuta a nivel de terminal la función, donde ya tiene predefinidas 4 llamadas y devuelve su resultado impreso en una `console.log()`.

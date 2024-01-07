@@ -37,20 +37,6 @@ export function throttle<T extends (...args: Parameters<T>) => void>(
     }
   };
 }
-// return (...args: Parameters<T>) => {
-//   // console.log("asd");
-//   if (!wait) {
-//     clearTimeout(lastFn);
-//     callback(...args);
-//     wait = true;
-//     lastFn = setTimeout(() => {
-//       wait = false;
-//     }, freq);
-//   } else {
-//     console.log("throttled!");
-//   }
-// };
-// }
 
 // No funciona el front, sirve para provar su funcionalidad
 
@@ -60,6 +46,6 @@ export function throttle<T extends (...args: Parameters<T>) => void>(
 // }, 2000);
 
 // result();
-// setTimeout(() => result(), 100);
+// setTimeout(() => result(), 1000);
 // setTimeout(() => result(), 2000);
 // setTimeout(() => result(), 2500);
